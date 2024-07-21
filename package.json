@@ -1,0 +1,19 @@
+{
+  "name": "personalfinance",
+  "version": "1.0.0",
+  "description": "Personal Finance Management App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "author": "Godwin",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "express": "^4.19.2",
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.5.1",
+    "nodemon": "^3.1.4"
+  }
+}
