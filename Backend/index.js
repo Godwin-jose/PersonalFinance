@@ -3,8 +3,12 @@ const bcrypt = require('bcrypt');
 require('./connection')
 const usersdata=require('./models/users.model');
 const Budget=require('./models/dashboard.model');
+const cors = require('cors');
+
+
 
 const app = express()
+app.use(cors());
 
 
 
@@ -59,8 +63,15 @@ app.get('/users',async(req,res)=>{
 
 app.post('/login', async (req, res) => {
     const { userName, password } = req.body;
+    
   
     try {
+      if(userName =='admin' && password=='admin'){
+
+        return res.status(201).json({ message: '1' });
+        
+  
+      }
       // Find user by username
       const user = await usersdata.findOne({ userName });
       const Data = await Budget.find({ userName });
@@ -77,6 +88,8 @@ app.post('/login', async (req, res) => {
       if (!isMatch) {
         return res.status(400).json({ message: 'Invalid credentials' });
       }
+
+      
   
       // res.status(200).json({ message: 'Login successful' });
       res.status(200).json(Data);
@@ -87,7 +100,34 @@ app.post('/login', async (req, res) => {
   });
 
 
+  app.post('/admin/login', async (req, res) => {
+    const {userName} = req.body;
+  
+    try {
+      // Find user by username
+      const user = await usersdata.findOne({ userName });
+      const Data = await Budget.find({ userName });
 
+  
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+  
+      // Compare provided password with stored hashed password
+      const isMatch = true;
+     
+  
+      if (!isMatch) {
+        return res.status(400).json({ message: 'Invalid credentials' });
+      }
+  
+      // res.status(200).json({ message: 'Login successful' });
+      res.status(200).json(Data);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Server error' });
+    }
+  });
 
 
 
@@ -116,16 +156,7 @@ app.post('/profile',async(req,res)=>{               //dashboard database post
         console.log(error)
        }
 })
-app.post('/profile',async(req,res)=>{
-    try {
-      const {userName}=req.body;
-    const user=await Budget.findOne({userName});               //datas of a user in a a dashboard 
-    res.status(200).json(user);
-        
-    } catch (error) {
-        console.log(error)
-    }
-})
+
 
 app.delete('/profile/:id',async(req,res)=>{        //Delete a data of  user from database dashboard 
     try {
@@ -137,6 +168,19 @@ app.delete('/profile/:id',async(req,res)=>{        //Delete a data of  user from
         console.log(error)
     }
 })
+
+app.delete('/profile/user/:id',async(req,res)=>{        //Delete  user from database dashboard 
+  try {
+      const {id}=req.params;
+      await usersdata.findByIdAndDelete(id);
+      res.status(200).json("Data Deleted")
+      
+  } catch (error) {
+      console.log(error)
+  }
+})
+
+
 app.put('/profile/:id',async(req,res)=>{           //update data of user in dashboard
     try {
     const {id}=req.params;
@@ -154,28 +198,28 @@ app.put('/profile/:id',async(req,res)=>{           //update data of user in dash
 
 //Admin
 
-app.post('/admin', async (req, res) => {
-  const { userName, password } = req.body;
+// app.post('/admin', async (req, res) => {
+//   const { userName, password } = req.body;
 
-  try {
-    // Find user by username
-    if(userName =='Godu' && password=='1234'){
+//   try {
+//     // Find user by username
+//     if(userName =='admin' && password=='admin'){
 
-      res.status(200).json({ message: 'Login successful' });
+//       res.status(200).json({ message: 'Login successful' });
       
 
-    }else{
-      res.status(404).json("User Not Found")
-    }
+//     }else{
+//       res.status(404).json("User Not Found")
+//     }
 
 
 
    
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Server error' });
-  }
-});
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: 'Server error' });
+//   }
+// });
 
 
 
