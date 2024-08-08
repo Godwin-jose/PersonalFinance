@@ -1,0 +1,86 @@
+/* Container */
+.container {
+    margin-top: 32px;
+    margin-bottom: 32px;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  /* Paper */
+  .paper {
+    padding: 20px;
+    margin-bottom: 16px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Typography */
+  .paper h4 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333333;
+    margin-bottom: 10px;
+  }
+  
+  .paper p {
+    font-size: 1rem;
+    color: #666666;
+  }
+  
+  /* Table */
+  .table-container {
+    min-width: 650px;
+  }
+  
+  .table-head-cell {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #555555;
+    background-color: #f0f0f0;
+  }
+  
+  .table-row:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .table-row:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Buttons */
+  .view-dashboard-button {
+    margin-right: 8px;
+    color: #1976d2;
+    border-color: #1976d2;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .view-dashboard-button:hover {
+    background-color: #1976d2;
+    color: #ffffff;
+  }
+  
+  .delete-button {
+    color: #d32f2f;
+    border-color: #d32f2f;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .delete-button:hover {
+    background-color: #d32f2f;
+    color: #ffffff;
+  }
+  
+  /* Additional Styles */
+  .table-cell {
+    padding: 16px;
+    font-size: 1rem;
+    color: #333333;
+  }
+  
+  .table-cell-align-right {
+    text-align: right;
+  }
+  

@@ -149,6 +149,7 @@ app.get('/profile',async(req,res)=>{
 
 app.post('/profile',async(req,res)=>{               //dashboard database post
        try {
+        console.log(req.body);
         await Budget(req.body).save();
         res.status(201).json('Budget added to Database')
         
@@ -184,12 +185,28 @@ app.delete('/profile/user/:id',async(req,res)=>{        //Delete  user from data
 app.put('/profile/:id',async(req,res)=>{           //update data of user in dashboard
     try {
     const {id}=req.params;
+    const Data = await Budget.find({ id });
     await Budget.findByIdAndUpdate(id,req.body);
+    res.status(200).json(Data)
     res.status(200).json('Data Updated Successfully')
         
     } catch (error) {
         console.log(error)
     }
+
+})
+
+app.get('/profile/:id',async(req,res)=>{           //update data of user in dashboard
+  try {
+  const {id}=req.params;
+  const Data = await Budget.find({_id:id});
+ 
+  res.status(200).json(Data)
+ 
+      
+  } catch (error) {
+      console.log(error)
+  }
 
 })
 

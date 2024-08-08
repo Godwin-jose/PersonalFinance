@@ -8,6 +8,7 @@ import Adminboard from './components/Adminboard'
 import { Route, Routes } from 'react-router-dom'
 import Dashboard from './components/Dashboard'
 import LandingPage from './components/LandingPage'
+import Edit  from './components/Edit'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -24,6 +25,7 @@ function App() {
       <Route path='/login' element={<Login/>}/>
       <Route path='/signup' element={<Signup/>}/>
       <Route path='/add' element={<Userboard/>}/>
+      <Route path='/edit' element={<Edit/>}/>
       <Route path='/admin' element={<Adminboard/>}/>
       <Route path='/dashboard' element={<Dashboard/>}/>
         

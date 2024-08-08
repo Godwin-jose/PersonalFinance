@@ -36,6 +36,9 @@ const UserDashboard = () => {
     await axiosInstance.delete(`http://localhost:3000/profile/${id}`);
     window.location.reload();
   };
+  const editData=(id)=>{
+    navigate('/edit', { state: { userName:userName,_id:id} });
+  }
 
   const addItems = () => {
     console.log(userName);
@@ -90,7 +93,7 @@ const UserDashboard = () => {
                   </Typography>
                 </Grid>
                 <Grid item xs={12} md={6} container justifyContent="flex-end" alignItems="center">
-                  <Button variant="outlined" color="primary" sx={{ mr: 2, py: 1, px: 3, border: '1px solid #1976d2', borderRadius: 0 }}>
+                  <Button variant="outlined" color="primary" sx={{ mr: 2, py: 1, px: 3, border: '1px solid #1976d2', borderRadius: 0 }} onClick={() => editData(user._id)} >
                     Edit Category
                   </Button>
                   <Button variant="outlined" color="secondary" sx={{ py: 1, px: 3, border: '1px solid #d32f2f', borderRadius: 0 }} onClick={() => deleteData(user._id)}>

@@ -1,23 +1,29 @@
-import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material'
-import React from 'react'
-import { Link } from 'react-router-dom'
+import { AppBar, Box, Button, Toolbar, Typography } from '@mui/material';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import '../styles/Navbar.css';
 
 const Navbar = () => {
   return (
+    <div id="body">
     
-    <div>
-      <Box>
-        <AppBar>
-            <Toolbar>
-                <Typography variant='h6' sx={{ flexGrow: 1 }}>Income Management</Typography>&nbsp;
-                <Button variant='contained' color='success'><Link to={'/login'} style={{textDecoration: "none", color:"white"}}>Login</Link></Button>&nbsp;&nbsp;
-                <Button variant='contained' color='success'><Link to={'/signup'} style={{textDecoration: "none", color:"white"}}>Sign Up</Link></Button>
-            </Toolbar>
-        </AppBar>
-      </Box>
       <br /><br /><br />
+      <nav className="navbar">
+        <div className="navbar-logo">IncomeApp</div>
+        <div className="navbar-links">
+        <Button>
+            <Link to={'/'} style={{ textDecoration: 'none', color: 'white' }}>Home</Link>
+          </Button>
+          <Button color='success'>
+            <Link to={'/login'} style={{ textDecoration: 'none', color: 'white' }}>Login</Link>
+          </Button>&nbsp;&nbsp;
+          <Button>
+            <Link to={'/signup'} style={{ textDecoration: 'none', color: 'white' }}>Sign Up</Link>
+          </Button>
+        </div>
+      </nav>
     </div>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const LandingPage = () => {
   return (
@@ -16,7 +17,8 @@ const LandingPage = () => {
         <div style={styles.heroContent}>
           <h1 style={styles.heroTitle}>Take Control of Your Finances</h1>
           <p style={styles.heroSubtitle}>Track your expenses, set budgets, and achieve your financial goals effortlessly.</p>
-          <button style={styles.ctaButton}>Get Started Now</button>
+          <button style={styles.ctaButton}>
+          <Link to={'/signup'} style={{ textDecoration: 'none', color: 'white' }}>Get Started Now</Link></button>
         </div>
       </div>
       <section style={styles.features}>
