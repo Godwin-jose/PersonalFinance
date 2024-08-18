@@ -11,7 +11,7 @@ const Login = () => {
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState(null);
 
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -30,10 +30,10 @@ const Login = () => {
       const response = await axiosInstance.post('/login', formData);
       console.log(response.data.message);
       if(response.data.message === "1"){
-        navigate('/admin');
+        navigate('/admin', { state: { val:"(._.)" } });
       } else {
-        navigate('/dashboard', { state: { userName: formData.userName} });
-      } // Navigate to the dashboard or another route after success
+        navigate('/dashboard', { state: { userName: formData.userName } });
+      }
     } catch (error) {
       if (error.response) {
         setError(error.response.data.message);
@@ -50,16 +50,17 @@ const Login = () => {
         justifyContent: 'center', 
         alignItems: 'center', 
         height: '100vh', 
-        backgroundColor: '#f5f5f5' // Light grey background
+        backgroundColor: 'rgba(0, 0, 0, 0.5)' // Optional: dark overlay for better readability
       }}
     >
       <Container maxWidth="xs">
-        <Box 
+      <Box 
           sx={{ 
             padding: 3, 
             borderRadius: 2, 
             boxShadow: 3, 
-            backgroundColor: 'white'
+            backgroundColor: 'rgba(255, 255, 255, 0.5)', // White background with lower opacity for translucency
+            backdropFilter: 'blur(5px)', // Optional: add blur effect
           }}
         >
           <Typography variant="h4" gutterBottom align="center">

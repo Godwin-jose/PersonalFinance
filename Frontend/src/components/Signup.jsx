@@ -45,16 +45,20 @@ const Signup = () => {
         justifyContent: 'center', 
         alignItems: 'center', 
         height: '100vh', 
-        backgroundColor: '#f5f5f5' // Light grey background
+        backgroundImage: 'url(/path/to/your/background-image.jpg)', // Add your background image URL here
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        position: 'relative',
       }}
     >
-      <Container maxWidth="xs">
+      <Container maxWidth="xs" sx={{ position: 'relative', zIndex: 2 }}>
         <Box 
           sx={{ 
             padding: 3, 
             borderRadius: 2, 
             boxShadow: 3, 
-            backgroundColor: 'white'
+            backgroundColor: 'rgba(255, 255, 255, 0.5)', // White background with lower opacity for translucency
+            backdropFilter: 'blur(5px)', // Optional: add blur effect
           }}
         >
           <Typography variant="h4" gutterBottom align="center">

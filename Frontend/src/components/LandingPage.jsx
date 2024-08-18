@@ -6,11 +6,6 @@ const LandingPage = () => {
     <div style={styles.landingPage}>
       <header style={styles.header}>
         <nav>
-          <ul style={styles.navList}>
-            <li style={styles.navItem}><a href="/" style={styles.navLink}>Home</a></li>
-            <li style={styles.navItem}><a href="/login" style={styles.navLink}>Login</a></li>
-            <li style={styles.navItem}><a href="/signup" style={styles.navLink}>Sign Up</a></li>
-          </ul>
         </nav>
       </header>
       <div style={styles.hero}>
@@ -18,7 +13,8 @@ const LandingPage = () => {
           <h1 style={styles.heroTitle}>Take Control of Your Finances</h1>
           <p style={styles.heroSubtitle}>Track your expenses, set budgets, and achieve your financial goals effortlessly.</p>
           <button style={styles.ctaButton}>
-          <Link to={'/signup'} style={{ textDecoration: 'none', color: 'white' }}>Get Started Now</Link></button>
+            <Link to={'/signup'} style={{ textDecoration: 'none', color: 'white' }}>Get Started Now</Link>
+          </button>
         </div>
       </div>
       <section style={styles.features}>
@@ -44,6 +40,8 @@ const styles = {
     fontFamily: 'Arial, sans-serif',
     backgroundColor: '#121212',
     color: '#E0E0E0',
+    position: 'relative',
+    overflow: 'hidden',
   },
   header: {
     backgroundColor: '#1E1E1E',
@@ -51,36 +49,25 @@ const styles = {
     padding: '10px',
     textAlign: 'center',
   },
-  navList: {
-    listStyle: 'none',
-    margin: 0,
-    padding: 0,
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  navItem: {
-    marginRight: '20px',
-  },
-  navLink: {
-    color: '#fff',
-    textDecoration: 'none',
-  },
   hero: {
+    position: 'relative',
     backgroundImage: 'url("https://source.unsplash.com/1600x900/?finance,money")',
     backgroundSize: 'cover',
-    backgroundBlendMode: 'multiply',
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    backgroundPosition: 'center',
     height: '100vh',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     color: '#fff',
     textAlign: 'center',
+    overflow: 'hidden',
   },
   heroContent: {
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    position: 'relative',
+    backgroundColor: 'rgba(0, 0, 0, 0.07)', // Adjust as needed
     padding: '20px',
     borderRadius: '10px',
+    zIndex: 1,
   },
   heroTitle: {
     fontSize: '48px',
