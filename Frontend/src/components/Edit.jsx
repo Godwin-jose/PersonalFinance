@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Container, TextField, Typography, Button } from '@mui/material';
-import axiosInstance from '../axiosConfig'; // Import your configured axios instance
+import { Container, TextField, Typography, Button, Box } from '@mui/material';
+import axiosInstance from '../axiosConfig';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const Userboard = () => {
-  // State variables to store form data
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
@@ -13,12 +12,10 @@ const Userboard = () => {
   const userName = location.state?.userName;
   const id = location.state?._id;
 
-  // Fetch data when component mounts or id changes
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axiosInstance.get(`https://personalfinance-go7i.onrender.com/profile/${id}`);
-        // Assuming response.data is an array and the user data is the first object
         if (response.data.length > 0) {
           const user = response.data[0];
           setAmount(user.amount || '');
@@ -35,9 +32,8 @@ const Userboard = () => {
     }
   }, [id]);
 
-  // Function to handle form submission
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault();
 
     try {
       await axiosInstance.put(`https://personalfinance-go7i.onrender.com/profile/${id}`, {
@@ -46,8 +42,6 @@ const Userboard = () => {
         description
       });
       alert("Data Updated");
-
-      // Clear the form fields after submission
       setAmount('');
       setCategory('');
       setDescription('');
@@ -58,45 +52,64 @@ const Userboard = () => {
   };
 
   return (
-    <Container maxWidth="xs">
-      <Typography variant="h4" gutterBottom>
-        User Dashboard
-      </Typography>
-      <Typography variant="body1">
-        Edit your data
-      </Typography>
+    <Container
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh',
+        backgroundColor: 'transparent'
+      }}
+    >
+      <Box
+        sx={{
+          backgroundColor: 'rgba(255, 255, 255, 0.8)', // Translucent white background
+          padding: 4,
+          borderRadius: 2,
+          boxShadow: 3,
+          maxWidth: 400,
+          width: '100%'
+        }}
+      >
+        <Typography variant="h4" gutterBottom>
+          User Dashboard
+        </Typography>
+        <Typography variant="body1">
+          Edit your data
+        </Typography>
 
-      <form onSubmit={handleSubmit}>
-        <TextField
-          label="Amount"
-          fullWidth
-          margin="normal"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-        />
-        <TextField
-          label="Category"
-          fullWidth
-          margin="normal"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        />
-        <TextField
-          label="Description"
-          fullWidth
-          margin="normal"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          sx={{ mt: 2 }}
-        >
-          Submit
-        </Button>
-      </form>
+        <form onSubmit={handleSubmit}>
+          <TextField
+            label="Amount"
+            fullWidth
+            margin="normal"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+          />
+          <TextField
+            label="Category"
+            fullWidth
+            margin="normal"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          />
+          <TextField
+            label="Description"
+            fullWidth
+            margin="normal"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            sx={{ mt: 2 }}
+          >
+            Submit
+          </Button>
+        </form>
+      </Box>
     </Container>
   );
 };
