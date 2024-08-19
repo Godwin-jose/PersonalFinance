@@ -9,7 +9,7 @@ const cors = require('cors');
 
 const app = express()
 app.use(cors());
-
+const port=process.env.PORT || 4000;
 
 
 app.use(express.json());                           //Middleware
@@ -254,7 +254,7 @@ try {
 
 
 //listen
-app.listen(3000,()=>{
+app.listen(port,()=>{
     try {
         console.log("Listening on port 3000");
         
