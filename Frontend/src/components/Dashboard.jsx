@@ -14,7 +14,7 @@ const UserDashboard = () => {
     const fetchData = async () => {
       try {
         console.log('Fetching data for user:', userName);
-        const response = await axiosInstance.post('http://localhost:3000/admin/login', { userName });
+        const response = await axiosInstance.post('https://personalfinance-go7i.onrender.com/admin/login', { userName });
         setUsers(response.data);
         console.log('Response data:', response.data); // Log the response data
       } catch (error) {
@@ -34,7 +34,7 @@ const UserDashboard = () => {
   const deleteData = async (id) => {
     console.log('Deleting user with ID:', id);
     try {
-      await axiosInstance.delete(`http://localhost:3000/profile/${id}`);
+      await axiosInstance.delete(`https://personalfinance-go7i.onrender.com/profile/${id}`);
       setUsers(users.filter(user => user._id !== id));
     } catch (error) {
       console.error('Error deleting data:', error);
