@@ -17,7 +17,7 @@ const Userboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axiosInstance.get(`http://localhost:3000/profile/${id}`);
+        const response = await axiosInstance.get(`https://personalfinance-go7i.onrender.com/profile/${id}`);
         // Assuming response.data is an array and the user data is the first object
         if (response.data.length > 0) {
           const user = response.data[0];
@@ -40,7 +40,7 @@ const Userboard = () => {
     e.preventDefault(); // Prevent default form submission
 
     try {
-      await axiosInstance.put(`http://localhost:3000/profile/${id}`, {
+      await axiosInstance.put(`https://personalfinance-go7i.onrender.com/profile/${id}`, {
         amount,
         category,
         description
